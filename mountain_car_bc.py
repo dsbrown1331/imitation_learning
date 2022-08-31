@@ -19,49 +19,67 @@ def collect_human_demos(num_demos):
     return demos
 
 
-def torchify_demos(state_action_pairs):
+def torchify_demos(sas_pairs):
     states = []
     actions = []
-    for s,a in state_action_pairs:
+    next_states = []
+    for s,a, s2 in sas_pairs:
         states.append(s)
         actions.append(a)
+        next_states.append(s2)
 
     states = np.array(states)
     actions = np.array(actions)
+    next_states = np.array(next_states)
 
     obs_torch = torch.from_numpy(np.array(states)).float().to(device)
+    obs2_torch = torch.from_numpy(np.array(next_states)).float().to(device)
     acs_torch = torch.from_numpy(np.array(actions)).to(device)
 
-    return obs_torch, acs_torch
+    return obs_torch, acs_torch, obs2_torch
 
 
 def train_policy(obs, acs, nn_policy, num_train_iters):
     pi_optimizer = Adam(nn_policy.parameters(), lr=0.1)
     loss_criterion = nn.CrossEntropyLoss()
     
-    # run BC 
+    # run BC using all the demos in one giant batch
     for i in range(num_train_iters):
+        #zero out automatic differentiation from last time
         pi_optimizer.zero_grad()
-        #run through policy
+        #run each state in batch through policy to get predicted logits for classifying action
         pred_action_logits = nn_policy(obs)
+        #now compute loss by comparing what the policy thinks it should do with what the demonstrator didd
         loss = loss_criterion(pred_action_logits, acs) 
         print("iteration", i, "bc loss", loss)
+        #back propagate the error through the network to figure out how update it to prefer demonstrator actions
         loss.backward()
+        #perform update on policy parameters
         pi_optimizer.step()
 
 
 
 class PolicyNetwork(nn.Module):
+    '''
+        Simple neural network with two layers that maps a 2-d state to a prediction
+        over which of the three discrete actions should be taken.
+        The three outputs corresponding to the logits for a 3-way classification problem.
+
+    '''
     def __init__(self):
         super().__init__()
 
-        self.fc1 = nn.Linear(2, 8)
-        self.fc2 = nn.Linear(8, 3)
+        #This layer has 2 inputs corresponding to car position and velocity
+        self.fc1 = nn.Linear(2, 8)  
+        #This layer has three outputs corresponding to each of the three discrete actions
+        self.fc2 = nn.Linear(8, 3)  
 
 
 
     def forward(self, x):
-        x = F.leaky_relu(self.fc1(x))
+        #this method performs a forward pass through the network, applying a non-linearity (ReLU) on the 
+        #outputs of the first layer
+        x = F.relu(self.fc1(x))
         x = self.fc2(x)
         return x
 
@@ -80,7 +98,9 @@ def evaluate_policy(pi, num_evals, human_render=True):
         total_reward = 0
         obs = env.reset()
         while not done:
-            # print(pi(torch.from_numpy(obs).unsqueeze(0)))
+            #take the action that the network assigns the highest logit value to
+            #Note that first we convert from numpy to tensor and then we get the value of the 
+            #argmax using .item() and feed that into the environment
             action = torch.argmax(pi(torch.from_numpy(obs).unsqueeze(0))).item()
             # print(action)
             obs, rew, done, info = env.step(action)
@@ -105,7 +125,7 @@ if __name__ == "__main__":
     demos = collect_human_demos(args.num_demos)
 
     #process demos
-    obs, acs = torchify_demos(demos)
+    obs, acs, _ = torchify_demos(demos)
 
     #train policy
     pi = PolicyNetwork()

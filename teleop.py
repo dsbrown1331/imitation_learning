@@ -519,7 +519,7 @@ def collect_demos(
     steps = 0
     episodes = 0
     total_reward = 0
-    state_action_pairs = []
+    sas_pairs = []
     while episodes < num_demos:
         if done:
             done = False
@@ -532,8 +532,8 @@ def collect_demos(
             steps += 1
             action = key_code_to_action.get(tuple(sorted(game.pressed_keys)), noop)
             prev_obs = obs
-            state_action_pairs.append((prev_obs, action))
             obs, rew, done, info = env.step(action)
+            sas_pairs.append((prev_obs, action, obs))
             total_reward += rew
             if callback is not None:
                 callback(prev_obs, obs, action, rew, done, info)
@@ -553,4 +553,4 @@ def collect_demos(
         pygame.display.flip()
         clock.tick(fps)
     pygame.quit()
-    return state_action_pairs
+    return sas_pairs
