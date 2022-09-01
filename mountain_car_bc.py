@@ -41,6 +41,8 @@ def torchify_demos(sas_pairs):
 
 def train_policy(obs, acs, nn_policy, num_train_iters):
     pi_optimizer = Adam(nn_policy.parameters(), lr=0.1)
+    #action space is discrete so our policy just needs to classify which action to take
+    #we typically train classifiers using a cross entropy loss
     loss_criterion = nn.CrossEntropyLoss()
     
     # run BC using all the demos in one giant batch

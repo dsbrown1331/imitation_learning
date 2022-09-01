@@ -73,22 +73,27 @@ if __name__ == "__main__":
     #collect random interaction data
     num_interactions = 50
     s_s2, acs = collect_random_interaction_data(num_interactions)
-
+    #put the data into tensors for feeding into torch
     s_s2_torch = torch.from_numpy(np.array(s_s2)).float().to(device)
     a_torch = torch.from_numpy(np.array(acs)).to(device)
 
-    inv_dyn = InvDynamicsNetwork()
+
+    #initialize inverse dynamics model
+    inv_dyn = InvDynamicsNetwork()  #TODO: need to fill in the blanks in this method
     ##################
     #TODO: you may need to tune the learning rate some
     ##################
-    optimizer = Adam(inv_dyn.parameters(), lr=0.01)
+    learning_rate = 0.01
+    optimizer = Adam(inv_dyn.parameters(), lr=learning_rate)
+    #action space is discrete so our policy just needs to classify which action to take
+    #we typically train classifiers using a cross entropy loss
     loss_criterion = nn.CrossEntropyLoss()
     
     # train inverse dynamics model in one big batch
     ####################
     #TODO you may need to tune the num_train_iters
     ####################
-    num_train_iters = 1000
+    num_train_iters = 1000  #number of times to run gradient descent on training data
     for i in range(num_train_iters):
         #zero out automatic differentiation from last time
         optimizer.zero_grad()
@@ -102,7 +107,7 @@ if __name__ == "__main__":
         #perform update on policy parameters
         optimizer.step()
 
-    #visually check performance
+    #check performance for debugging
     outputs = inv_dyn(s_s2_torch[:10])
     _, predicted = torch.max(outputs, 1)
     print("checking predictions on first 10 actions from random interaction data")
@@ -117,15 +122,14 @@ if __name__ == "__main__":
 
     #estimate actions
     state_trans = torch.cat((obs, obs2), dim = 1)
-    print(state_trans)
-    print(state_trans.size())
     outputs = inv_dyn(state_trans)
     _, acs = torch.max(outputs, 1)
+    #check accuracy on demos for debugging
     print("checking predicted demonstrator actions with actual actions from demonstrations")
     print("predicted", acs[:20])
     print("actual", acs_true[:20])
 
-    #train policy
+    #train policy using predicted actions for states
     pi = PolicyNetwork()
     train_policy(obs, acs, pi, args.num_bc_iters)
 
