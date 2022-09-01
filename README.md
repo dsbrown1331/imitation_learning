@@ -41,7 +41,7 @@ In MountainCar there are three actions: 0 (accelerate left), 1 (don't accelerate
 The goal of MountainCar is to have the car drive to the flag on the top of the hill to the right. The car gets -1 reward for every step and gets 200 steps to try and get out of the hill. Because the reward is -1 per timestep the optimal policy is to get out of the valley in as few timesteps as possible.
 
 
-You will need to write up your responses to the following parts of the homework and submit your code via Canvas to get credit for this homework assignment.
+<strong>You will need to type up your responses to the following parts of the homework and submit your responses and code via Canvas to get credit for this homework assignment. You are encouraged to talk about the homework with other students and share resources, but please do not share or copy code.</strong>.
 
 ## Part 1:
 
