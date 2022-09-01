@@ -41,6 +41,8 @@ In MountainCar there are three actions: 0 (accelerate left), 1 (don't accelerate
 The goal of MountainCar is to have the car drive to the flag on the top of the hill to the right. The car gets -1 reward for every step and gets 200 steps to try and get out of the hill. Because the reward is -1 per timestep the optimal policy is to get out of the valley in as few timesteps as possible.
 
 
+You will need to write up your responses to the following parts of the homework and submit your code via Canvas to get credit for this homework assignment.
+
 ## Part 1:
 
 Run the following code again
@@ -100,7 +102,9 @@ python mountain_car_bc.py --num_demos 5
 Were you able to teach the agent to oscillate without ending the episode early?
 
 ## Part 6
-Describe what changes you would need to make to the code to implement BCO.
+Describe what changes you would need to make to the code in `mountain_car_bc.py` to implement BCO. Answer this question before starting Part 7 and before looking at `mountain_car_bco.py`.
 
 ## Part 7
 Implement and test BC(0) by training an inverse dynamics model. You can find starter code in `mountain_car_bco.py`. Report how well it works and what you tried to get it to work.
+
+
