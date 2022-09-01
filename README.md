@@ -41,7 +41,7 @@ In MountainCar there are three actions: 0 (accelerate left), 1 (don't accelerate
 The goal of MountainCar is to have the car drive to the flag on the top of the hill to the right. The car gets -1 reward for every step and gets 200 steps to try and get out of the hill. Because the reward is -1 per timestep the optimal policy is to get out of the valley in as few timesteps as possible.
 
 
-## Question 1:
+## Part 1:
 
 Run the following code again
 ```
@@ -49,7 +49,7 @@ python test_gym.py
 ```
 What do you notice happening? MountainCar is a classic RL problem known for being a difficult exploration problem. Why do you think a trial and error method like RL would struggle with MountainCar? Hint: RL uses the reward as a signal for what is good and bad so why might that be a problem in MountainCar?
 
-## Question 2:
+## Part 2:
 You will now learn how to solve the MountainCar task by driving the car yourself.
 Run
 ```
@@ -64,7 +64,7 @@ Experiment with different strategies: e.g.
 3. Left, right, left, right up the hill.
 Which strategy do you like best? What is the best score you can get as a human demonstrator?
 
-## Question 3: 
+## Part 3: 
 
 Now we will teach a simple behavioral cloning (BC) agent to drive itself out of the valley.
 
@@ -76,7 +76,7 @@ python mountain_car_bc.py
 ```
 Try to give a good demonstration. Then watch what the agent has learned. Does it do a good job imitating? Does it ever get stuck? What is the average, min, and max?
 
-## Question 3
+## Part 4
 
 Let's give more than one demonstration. Run the following to give 5 good demonstrations. If you mess up during one demo, feel free to restart until you give 5 good demos and try to keep to a consistent strategy.
 ```
@@ -84,7 +84,7 @@ python mountain_car_bc.py --num_demos 5
 ```
 Report the average min and max returns. Did it perform any better? Why or why not? Does the agent copy the strategy you used? 
 
-## Question 4
+## Part 4
 What do you think will happen if we give good and bad demonstrations?
 You will now give two demonstrations. For the first one, just press the right arrow key for the entire episode until it restarts. Then for the second demo, give a good demonstration that quickly gets out of the valley.
 ```
@@ -92,15 +92,15 @@ python mountain_car_bc.py --num_demos 2
 ```
 What does the policy learn? Why might bad demonstrations be a problem? Briefly describe one potential idea for making BC robust to bad demonstrations.
 
-## Question 4
+## Part 5
 Let's teach the agent to do something else. Give 5 demonstrations that drive back and forth going up and down the sides of the valley, but without going out and reaching the flag.  Run BC and see if the agent learns this new skill:
 ```
 python mountain_car_bc.py --num_demos 5
 ```
 Were you able to teach the agent to oscillate without ending the episode early?
 
-## Question 5
+## Part 6
 Describe what changes you would need to make to the code to implement BCO.
 
-## Question 6
-Implement and test BC(0). You can find starter code in `mountain_car_bco.py`. Report how well it works and what you tried to get it to work.
+## Part 7
+Implement and test BC(0) by training an inverse dynamics model. You can find starter code in `mountain_car_bco.py`. Report how well it works and what you tried to get it to work.
