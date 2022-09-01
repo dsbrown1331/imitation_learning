@@ -36,9 +36,9 @@ def collect_random_interaction_data(num_iters):
 
 class InvDynamicsNetwork(nn.Module):
     '''
-        Simple neural network with two layers that maps (s,s') state to a prediction
+        Neural network with that maps (s,s') state to a prediction
         over which of the three discrete actions was taken.
-        The three outputs corresponding to the logits for a 3-way classification problem.
+        The network should have three outputs corresponding to the logits for a 3-way classification problem.
 
     '''
     def __init__(self):

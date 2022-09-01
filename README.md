@@ -102,6 +102,5 @@ Were you able to teach the agent to oscillate without ending the episode early?
 ## Question 5
 Describe what changes you would need to make to the code to implement BCO.
 
-## Extra Credit
-Implement and test BC(0). You may find the code in `test_gym.py` useful for collecting data to train the inverse dynamics model.
-Report how well it works
+## Question 6
+Implement and test BC(0). You can find starter code in `mountain_car_bco.py`. Report how well it works and what you tried to get it to work.
