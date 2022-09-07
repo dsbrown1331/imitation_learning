@@ -1,5 +1,7 @@
 # Homework 1 for CS 6960 Human-AI Alignment
 
+
+### Installation Ubuntu
 First it is recommended that you install anaconda: <https://www.anaconda.com/products/distribution> a popular python distribution and software management platform.
 
 Next, git clone this repository.
@@ -24,6 +26,22 @@ To test the code run
 python test_gym.py
 ```
 You should see a visualization of a car moving back and forth at the bottom of a valley.
+
+### Installation other platforms
+Currently still debugging this, but try 
+```
+conda env create -f environment_basic.yml
+```
+then 
+```
+conda activate imitation_learning
+```
+then
+```
+pip install gym[classic_control,other]
+```
+and hopefully that will install everything needed in a more platform independent way.
+
 
 ### PyTorch Primer
 If you have never used PyTorch before, I'd recommend going through the 60-minute blitz tutorial: <https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html>
