@@ -1,0 +1,10 @@
+name: imitation_learning
+channels:
+  - defaults
+dependencies:
+  - python=3.9
+  - cpuonly
+  - pytorch
+  - torchaudio
+  - torchvision
+prefix: /home/dsbrown/anaconda3/envs/imitation_learning
