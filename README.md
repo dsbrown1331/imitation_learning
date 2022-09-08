@@ -38,7 +38,7 @@ conda activate imitation_learning
 ```
 then
 ```
-pip install gym[classic_control,other]
+pip install gym[classic_control,other]==0.25.2
 ```
 and hopefully that will install everything needed in a more platform independent way.
 
