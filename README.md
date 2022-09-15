@@ -123,6 +123,6 @@ Were you able to teach the agent to oscillate without ending the episode early?
 Describe what changes you would need to make to the code in `mountain_car_bc.py` to implement BCO. Answer this question before starting Part 7 and before looking at `mountain_car_bco.py`.
 
 ## Part 8
-Implement and test BC(0) by training an inverse dynamics model. You can find starter code in `mountain_car_bco.py`. Report how well it works and what you tried to get it to work.
+Implement and test BCO(0) by training an inverse dynamics model. You can find starter code in `mountain_car_bco.py`. Report how well it works and what you tried to get it to work. Note, all you need to do is code the part for the inverse dynamics model.
 
 
