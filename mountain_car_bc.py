@@ -34,7 +34,7 @@ def torchify_demos(sas_pairs):
 
     obs_torch = torch.from_numpy(np.array(states)).float().to(device)
     obs2_torch = torch.from_numpy(np.array(next_states)).float().to(device)
-    acs_torch = torch.from_numpy(np.array(actions)).to(device)
+    acs_torch = torch.from_numpy(np.array(actions)).long().to(device)
 
     return obs_torch, acs_torch, obs2_torch
 

@@ -75,7 +75,7 @@ if __name__ == "__main__":
     s_s2, acs = collect_random_interaction_data(num_interactions)
     #put the data into tensors for feeding into torch
     s_s2_torch = torch.from_numpy(np.array(s_s2)).float().to(device)
-    a_torch = torch.from_numpy(np.array(acs)).to(device)
+    a_torch = torch.from_numpy(np.array(acs)).long().to(device)
 
 
     #initialize inverse dynamics model
