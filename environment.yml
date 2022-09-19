@@ -89,4 +89,3 @@ dependencies:
     - pyparsing==3.0.9
     - python-dateutil==2.8.2
     - zipp==3.8.1
-prefix: /home/dsbrown/anaconda3/envs/imitation_learning

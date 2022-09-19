@@ -1,5 +1,7 @@
 # Homework 1 for CS 6960 Human-AI Alignment
 
+
+### Installation Ubuntu
 First it is recommended that you install anaconda: <https://www.anaconda.com/products/distribution> a popular python distribution and software management platform.
 
 Next, git clone this repository.
@@ -24,6 +26,22 @@ To test the code run
 python test_gym.py
 ```
 You should see a visualization of a car moving back and forth at the bottom of a valley.
+
+### Installation other platforms
+Currently still debugging this, but try 
+```
+conda env create -f environment_basic.yml
+```
+then 
+```
+conda activate imitation_learning
+```
+then
+```
+pip install gym[classic_control,other]==0.25.2
+```
+and hopefully that will install everything needed in a more platform independent way.
+
 
 ### PyTorch Primer
 If you have never used PyTorch before, I'd recommend going through the 60-minute blitz tutorial: <https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html>
@@ -86,7 +104,7 @@ python mountain_car_bc.py --num_demos 5
 ```
 Report the average min and max returns. Did it perform any better? Why or why not? Does the agent copy the strategy you used? 
 
-## Part 4
+## Part 5
 What do you think will happen if we give good and bad demonstrations?
 You will now give two demonstrations. For the first one, just press the right arrow key for the entire episode until it restarts. Then for the second demo, give a good demonstration that quickly gets out of the valley.
 ```
@@ -94,17 +112,17 @@ python mountain_car_bc.py --num_demos 2
 ```
 What does the policy learn? Why might bad demonstrations be a problem? Briefly describe one potential idea for making BC robust to bad demonstrations.
 
-## Part 5
+## Part 6
 Let's teach the agent to do something else. Give 5 demonstrations that drive back and forth going up and down the sides of the valley, but without going out and reaching the flag.  Run BC and see if the agent learns this new skill:
 ```
 python mountain_car_bc.py --num_demos 5
 ```
 Were you able to teach the agent to oscillate without ending the episode early?
 
-## Part 6
+## Part 7
 Describe what changes you would need to make to the code in `mountain_car_bc.py` to implement BCO. Answer this question before starting Part 7 and before looking at `mountain_car_bco.py`.
 
-## Part 7
-Implement and test BC(0) by training an inverse dynamics model. You can find starter code in `mountain_car_bco.py`. Report how well it works and what you tried to get it to work.
+## Part 8
+Implement and test BCO(0) by training an inverse dynamics model. You can find starter code in `mountain_car_bco.py`. Report how well it works and what you tried to get it to work. Note, all you need to do is code the part for the inverse dynamics model.
 
 
