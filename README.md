@@ -27,8 +27,8 @@ python test_gym.py
 ```
 You should see a visualization of a car moving back and forth at the bottom of a valley.
 
-### Installation other platforms
-Currently still debugging this, but try 
+### Installation other platforms (Windows, iOS)
+Try 
 ```
 conda env create -f environment_basic.yml
 ```
