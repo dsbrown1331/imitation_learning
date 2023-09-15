@@ -17,16 +17,16 @@ def collect_random_interaction_data(num_iters):
     state_next_state = []
     actions = []
     env = gym.make('MountainCar-v0')
+    for _ in range(num_iters):
+        obs = env.reset()
 
-    obs = env.reset()
-
-    done = False
-    while not done:
-        a = env.action_space.sample()
-        next_obs, reward, done, info = env.step(a)
-        state_next_state.append(np.concatenate((obs,next_obs), axis=0))
-        actions.append(a)
-        obs = next_obs
+        done = False
+        while not done:
+            a = env.action_space.sample()
+            next_obs, reward, done, info = env.step(a)
+            state_next_state.append(np.concatenate((obs,next_obs), axis=0))
+            actions.append(a)
+            obs = next_obs
     env.close()
 
     return np.array(state_next_state), np.array(actions)
@@ -71,7 +71,7 @@ if __name__ == "__main__":
 
 
     #collect random interaction data
-    num_interactions = 50
+    num_interactions = 5
     s_s2, acs = collect_random_interaction_data(num_interactions)
     #put the data into tensors for feeding into torch
     s_s2_torch = torch.from_numpy(np.array(s_s2)).float().to(device)
