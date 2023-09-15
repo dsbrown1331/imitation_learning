@@ -1,5 +1,6 @@
 # Homework 1 for CS 6960 Human-AI Alignment
 
+<strong>Students should work in groups of 2-4 students for this homework and should only submit one report with the names of all group members </strong>
 
 ### Installation Ubuntu
 First it is recommended that you install anaconda: <https://www.anaconda.com/products/distribution> a popular python distribution and software management platform.
@@ -27,8 +28,8 @@ python test_gym.py
 ```
 You should see a visualization of a car moving back and forth at the bottom of a valley.
 
-### Installation other platforms
-Currently still debugging this, but try 
+### Installation other platforms (Windows, iOS)
+Try 
 ```
 conda env create -f environment_basic.yml
 ```
@@ -59,7 +60,7 @@ In MountainCar there are three actions: 0 (accelerate left), 1 (don't accelerate
 The goal of MountainCar is to have the car drive to the flag on the top of the hill to the right. The car gets -1 reward for every step and gets 200 steps to try and get out of the hill. Because the reward is -1 per timestep the optimal policy is to get out of the valley in as few timesteps as possible.
 
 
-<strong>You will need to type up your responses to the following parts of the homework and submit your responses and code via Canvas to get credit for this homework assignment. You are encouraged to talk about the homework with other students and share resources, but please do not share or copy code.</strong>.
+<strong>You will need to type up your responses to the following parts of the homework and submit your responses and code via Canvas to get credit for this homework assignment. </strong>
 
 ## Part 1:
 
