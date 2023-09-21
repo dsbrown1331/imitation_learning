@@ -41,6 +41,10 @@ then
 ```
 pip install gym[classic_control,other]==0.25.2
 ```
+for Mac OS try 
+```
+pip install 'gym[classic_control,other]'==0.25.2
+```
 and hopefully that will install everything needed in a more platform independent way.
 
 
