@@ -1,6 +1,6 @@
 # Homework Assignment: Behavior Cloning
 
-<strong>Students may work in groups of 1-3 students for this homework and should only submit one report with the names of all group members along with answers to all the following questions. Please also submit all the source code. </strong>
+<strong>Students may work in groups of 2-3 students for this homework and should only submit one report with the names of all group members along with answers to all the following questions. Please also submit all the source code. </strong>
 
 ### Installation Ubuntu
 First it is recommended that you install anaconda: <https://www.anaconda.com/products/distribution> a popular python distribution and software management platform.
@@ -95,7 +95,9 @@ Now you will code up a simple behavioral cloning (BC) agent to drive itself out 
 
 First take a look at `mountain_car_bc.py` and try to get a basic understanding of what is happening. By default this code will collect a single demonstration, then parse the states and actions into tensors for easy input to a PyTorch neural network. You then need to add code to trains a policy to imitate the demonstrations and evaluate the policy by testing it on different initial states. The commmand line will output the average, min, and max total rewards.
 
-Try it out by running
+Play with the learning rate and number of iterations and network architecture a bit if it doesn't work initially, but don't spend too much time finetuning. If it roughly imitates you that is great. Move on. You've got better things to do with your life than fine-tuning hyperparams for a simple assignment :). Note that from 1 good demo the car should get out of the valley at least some of the time.
+
+Test it out by running
 ```
 python mountain_car_bc.py
 ```
@@ -127,7 +129,8 @@ Were you able to teach the agent to oscillate without ending the episode early?
 ## Part 7
 Describe what changes you would need to make to the code in `mountain_car_bc.py` to implement [Behavior Cloning from Observation (BCO)](https://arxiv.org/abs/1805.01954). Answer this question before starting Part 8 and before looking at `mountain_car_bco.py`.
 
-## Part 8: Bonus (Extra Credit)
-Implement and test BCO(0) by training an inverse dynamics model. You can find starter code in `mountain_car_bco.py`. Report how well it works and what you tried to get it to work. Note, you can and should use your solution for Behavior Cloning as part of your BCO solution. 
+## Part 8
+Implement and test BCO(0) (see paper above for details) by training an inverse dynamics model. You can find starter code in `mountain_car_bco.py`. Report how well it works and what you tried to get it to work. Note that mountain_car_bco.py already imports and calls the bc functions — the only thing you have to do is code the inverse dynamics model and training code. 
+
 
 
