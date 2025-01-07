@@ -1,4 +1,4 @@
-# Homework 1 for CS 6960 Human-AI Alignment
+# Homework Assignment 1: Behavior Cloning
 
 <strong>Students should work in groups of 2-4 students for this homework and should only submit one report with the names of all group members </strong>
 
