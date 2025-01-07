@@ -40,24 +40,7 @@ def torchify_demos(sas_pairs):
 
 
 def train_policy(obs, acs, nn_policy, num_train_iters):
-    pi_optimizer = Adam(nn_policy.parameters(), lr=0.1)
-    #action space is discrete so our policy just needs to classify which action to take
-    #we typically train classifiers using a cross entropy loss
-    loss_criterion = nn.CrossEntropyLoss()
-    
-    # run BC using all the demos in one giant batch
-    for i in range(num_train_iters):
-        #zero out automatic differentiation from last time
-        pi_optimizer.zero_grad()
-        #run each state in batch through policy to get predicted logits for classifying action
-        pred_action_logits = nn_policy(obs)
-        #now compute loss by comparing what the policy thinks it should do with what the demonstrator didd
-        loss = loss_criterion(pred_action_logits, acs) 
-        print("iteration", i, "bc loss", loss)
-        #back propagate the error through the network to figure out how update it to prefer demonstrator actions
-        loss.backward()
-        #perform update on policy parameters
-        pi_optimizer.step()
+    """TODO: train the policy using standard behavior cloning. Feel free to add other helper methods if you'd like or restructure the code as desired."""
 
 
 
@@ -71,19 +54,12 @@ class PolicyNetwork(nn.Module):
     def __init__(self):
         super().__init__()
 
-        #This layer has 2 inputs corresponding to car position and velocity
-        self.fc1 = nn.Linear(2, 8)  
-        #This layer has three outputs corresponding to each of the three discrete actions
-        self.fc2 = nn.Linear(8, 3)  
+       """TODO: create the layers for the neural network. A two-layer network should be sufficient"""
 
 
 
     def forward(self, x):
-        #this method performs a forward pass through the network, applying a non-linearity (ReLU) on the 
-        #outputs of the first layer
-        x = F.relu(self.fc1(x))
-        x = self.fc2(x)
-        return x
+        """TODO: this method performs a forward pass through the network, applying a non-linearity (ReLU is fine) on the hidden layers and should output logit values (since this is a discrete action task) for the 3-way classification problem"""
 
     
 
