@@ -1,4 +1,4 @@
-# Homework Assignment 1: Behavior Cloning
+# Homework Assignment: Behavior Cloning
 
 <strong>Students should work in groups of 2-4 students for this homework and should only submit one report with the names of all group members </strong>
 
