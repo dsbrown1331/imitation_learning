@@ -1,6 +1,6 @@
 # Homework Assignment: Behavior Cloning
 
-<strong>Students should work in groups of 2-4 students for this homework and should only submit one report with the names of all group members </strong>
+<strong>Students may work in groups of 1-3 students for this homework and should only submit one report with the names of all group members along with all the source code. </strong>
 
 ### Installation Ubuntu
 First it is recommended that you install anaconda: <https://www.anaconda.com/products/distribution> a popular python distribution and software management platform.
