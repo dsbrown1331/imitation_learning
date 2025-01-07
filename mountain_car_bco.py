@@ -81,38 +81,10 @@ if __name__ == "__main__":
     #initialize inverse dynamics model
     inv_dyn = InvDynamicsNetwork()  #TODO: need to fill in the blanks in this method
     ##################
-    #TODO: you may need to tune the learning rate some
+    #TODO: Train the inverse dyanmics model, no need to be fancy you can do it in one full batch via gradient descent if you like
     ##################
-    learning_rate = 0.01
-    optimizer = Adam(inv_dyn.parameters(), lr=learning_rate)
-    #action space is discrete so our policy just needs to classify which action to take
-    #we typically train classifiers using a cross entropy loss
-    loss_criterion = nn.CrossEntropyLoss()
-    
-    # train inverse dynamics model in one big batch
-    ####################
-    #TODO you may need to tune the num_train_iters
-    ####################
-    num_train_iters = 1000  #number of times to run gradient descent on training data
-    for i in range(num_train_iters):
-        #zero out automatic differentiation from last time
-        optimizer.zero_grad()
-        #run each state in batch through policy to get predicted logits for classifying action
-        pred_action_logits = inv_dyn(s_s2_torch)
-        #now compute loss by comparing what the policy thinks it should do with what the demonstrator didd
-        loss = loss_criterion(pred_action_logits, a_torch) 
-        print("iteration", i, "bc loss", loss)
-        #back propagate the error through the network to figure out how update it to prefer demonstrator actions
-        loss.backward()
-        #perform update on policy parameters
-        optimizer.step()
 
-    #check performance for debugging
-    outputs = inv_dyn(s_s2_torch[:10])
-    _, predicted = torch.max(outputs, 1)
-    print("checking predictions on first 10 actions from random interaction data")
-    print("predicted actions", predicted)
-    print("actual actions", acs[:10])
+
 
     #collect human demos
     demos = collect_human_demos(args.num_demos)
@@ -120,16 +92,12 @@ if __name__ == "__main__":
     #process demos
     obs, acs_true, obs2 = torchify_demos(demos)
 
-    #estimate actions
+    #predict actions
     state_trans = torch.cat((obs, obs2), dim = 1)
     outputs = inv_dyn(state_trans)
     _, acs = torch.max(outputs, 1)
-    #check accuracy on demos for debugging
-    print("checking predicted demonstrator actions with actual actions from demonstrations")
-    print("predicted", acs[:20])
-    print("actual", acs_true[:20])
 
-    #train policy using predicted actions for states
+    #train policy using predicted actions for states this should use your train_policy function from your BC implementation
     pi = PolicyNetwork()
     train_policy(obs, acs, pi, args.num_bc_iters)
 
