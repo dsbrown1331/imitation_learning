@@ -49,7 +49,7 @@ and hopefully that will install everything needed in a more platform independent
 
 
 ### PyTorch Primer
-If you have never used PyTorch before, I'd recommend going through some of the tutorials linked in the resources section here <[https://dsbrown1331.github.io/advanced-ai/](https://dsbrown1331.github.io/advanced-ai/#resources)>
+If you have never used PyTorch before, I'd recommend going through some of the tutorials linked in the resources section here [https://dsbrown1331.github.io/advanced-ai/](https://dsbrown1331.github.io/advanced-ai/#resources).
 
 
 ### OpenAI Gym Primer
