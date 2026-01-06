@@ -130,7 +130,7 @@ Were you able to teach the agent to oscillate without ending the episode early?
 Describe what changes you would need to make to the code in `mountain_car_bc.py` to implement [Behavior Cloning from Observation (BCO)](https://arxiv.org/abs/1805.01954). Answer this question before starting Part 8 and before looking at `mountain_car_bco.py`.
 
 ## Part 8
-Implement and test BCO(0) (see paper above for details) by training an inverse dynamics model. You can find starter code in `mountain_car_bco.py`. Report how well it works and what you tried to get it to work. Note that mountain_car_bco.py already imports and calls the bc functions — the only thing you have to do is code the inverse dynamics model and training code. 
+Implement and test BCO(0) (see paper above for details) by training an inverse dynamics model. You can find starter code in `mountain_car_bco.py`. Report how well it works and what you tried to get it to work. Note that mountain_car_bco.py already imports and calls the bc functions — the only thing you have to do is code the inverse dynamics model and training code. You may need to play around a little with hyperparamters to adjust the amount of random exploration data, learning rate, network architecture, etc. But don't spend too much time perfecting this. If it's able to get out of the valley most of the time, that's great. 
 
 
 
