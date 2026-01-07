@@ -1,8 +1,9 @@
 """Utilities of visualising an environment."""
 from collections import deque
 from typing import Callable, Dict, List, Optional, Tuple, Union
-
 import numpy as np
+if not hasattr(np, "bool8"):
+    np.bool8 = np.bool_
 
 import gym.error
 from gym import Env, logger
