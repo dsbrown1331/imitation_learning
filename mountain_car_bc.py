@@ -8,7 +8,6 @@ from teleop import collect_demos
 import torch
 from torch.optim import Adam
 import torch.nn as nn
-import numpy as np
 import torch.nn.functional as F
 
 
