@@ -1,3 +1,6 @@
+import numpy as np
+if not hasattr(np, "bool8"):
+    np.bool8 = np.bool_
 import gym
 env = gym.make('MountainCar-v0')
 
