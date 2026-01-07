@@ -2,7 +2,7 @@
 
 <strong>Students may work in groups of 2-3 students for this homework and should only submit one report with the names of all group members along with answers to all the following questions. Please also submit all the source code. </strong>
 
-### Installation Ubuntu
+### Installation Ubuntu (skip if on Windows or iOS)
 First it is recommended that you install anaconda: <https://www.anaconda.com/products/distribution> a popular python distribution and software management platform.
 
 Next, git clone this repository.
@@ -37,7 +37,7 @@ then
 ```
 conda activate imitation_learning
 ```
-then
+then if on Windows run
 ```
 pip install gym[classic_control,other]==0.25.2
 ```
