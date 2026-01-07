@@ -5,4 +5,5 @@ dependencies:
   - python=3.9
   - pytorch
   - torchvision
+  - numpy=1.23.5          # pinned to be compatible with older Gym code
 
